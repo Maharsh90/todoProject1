@@ -1,0 +1,38 @@
+<%- include('header') -%>
+
+
+<div class="card">
+    <div class="outer">
+        <div class="container1 list-group list-group-flush"> 
+            <div class="card" id="heading">
+                <h3><%=CurrentDate%></h3>
+            </div>
+            <div class="card1 list-group-flush">
+                <input type="checkbox">
+                <label class="item1 list-group-item">Cook Food</label>
+            </div>
+            <% newListItem.forEach(function(item){ %>
+                <form action="/delete" class="card1 list-group-flush" method="post">
+                    <input type="checkbox" name="checkbox" value="<%= item._id %>" onclick="this.form.submit()">
+                    <label class="item1 list-group-item"><%= item.name %></label>
+                </form>
+            <% }) %>
+
+            <!-- <% for (var i=0;i<newListItem.length;i++){ %>
+                <form action="/delete" class="card1 list-group-flush" method="post">
+                        <input type="checkbox">
+                        <label class="item1 list-group-item"><%= newListItem[i].name %></label>
+                </form>
+            <% } %> -->
+
+            <form action="/" method="post" class="card1 list-group-flush mb-5">
+                    <input type="text" name="task" class="list-group-item" placeholder="New Item" autocomplete="off">
+                    <button class="btn1" type="submit" name="button">+</button>
+            </form>
+            <%- include('footer') -%>
+        </div>
+    </div>
+    
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
